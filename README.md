@@ -10,6 +10,8 @@
 * [AI硬件：SBC芯片行业分析报告](./The-SBC-chip-industry.pdf)
 * [具身智能大模型：世界模型](./Embodied-Intelligence-World-Model.pdf)
 ---
+## 📊 公募reits项目管理网页产品demo
+*  [在线体验 REITs 项目管理 Demo](https://reit-ai-pm-k7m4q2-d8d3bo0c4f4ff4-1474974666.tcloudbaseapp.com)
 
 📫 **联系方式**：
 * Email: jly2518555786@163.com
