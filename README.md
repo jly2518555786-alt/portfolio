@@ -51,6 +51,7 @@ AI 不是一个等待研究的遥远趋势，它已经开始重新定义每个�
 
 ## 📊 公募reits项目管理网页产品demo（由于数据私密性问题仅展示于此）
 * [在线体验 REITs 项目管理 Demo](https://reit-ai-pm-k7m4q2-d8d3bo0c4f4ff4-1474974666.tcloudbaseapp.com)
+* 做了一个python脚本，一键打开可以自动生成实时更新的excel（可视化的一种途径，便于在公司连接公司内网的情况下，提供给不懂技术的业务人员使用，连接的是mysql数据库，示例excel
 
 ## 📊 个人项目的presentation
 * [国际货币政策合作实践与难题——数字货币和稳定币](./International-Monetary-Policy-Digital-Currencies-Stablecoins.pptx)
