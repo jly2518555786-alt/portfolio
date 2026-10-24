@@ -52,8 +52,7 @@ AI 不是一个等待研究的遥远趋势，它已经开始重新定义每个�
 ## 📊 公募reits产品demo（由于数据私密性问题仅展示于此）
 * [在线体验 REITs 项目管理 Demo](https://reit-ai-pm-k7m4q2-d8d3bo0c4f4ff4-1474974666.tcloudbaseapp.com)
 * [体验可视化示例excel]做了一个python脚本，一键打开可以自动生成最新的的excel（可视化的一种途径，便于在公司连接公司内网的情况下，提供给不懂技术的业务人员使用，连接的是实时自动更新的数据库[(./Commercial Property REIT Data_20261009.xlsm)](https://github.com/jly2518555786-alt/portfolio/raw/refs/heads/main/Commercial%20Property%20REIT%20Data_20261009.xlsm)
-*  [一个reits公告项目在线阅读器]解决了所有的公告文件分布在上交所，深交所，项目申报，信息披露的不同阶段的问题。
-* ![Uploading image.png…]()
+
 
 
 
