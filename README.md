@@ -50,6 +50,7 @@ AI 不是一个等待研究的遥远趋势，它已经开始重新定义每个�
 * [具身智能大模型：世界模型](./Embodied-Intelligence-World-Model.pdf)
 
 ## 📊 公募reits产品demo（由于数据私密性问题仅展示于此）
+*所有的前端展示都是基于底层搭建的包含复杂业务逻辑的数据库
 * [在线体验 REITs 项目管理 Demo](https://reit-ai-pm-k7m4q2-d8d3bo0c4f4ff4-1474974666.tcloudbaseapp.com)
 * [体验可视化示例excel]做了一个python脚本，一键打开可以自动生成最新的的excel（可视化的一种途径，便于在公司连接公司内网的情况下，提供给不懂技术的业务人员使用，连接的是实时自动更新的数据库[(./Commercial Property REIT Data_20261009.xlsm)](https://github.com/jly2518555786-alt/portfolio/raw/refs/heads/main/Commercial%20Property%20REIT%20Data_20261009.xlsm)
 * [一个reits文件在线阅读器]<img width="3148" height="1803" alt="image" src="https://github.com/user-attachments/assets/550c3d96-152e-43ee-8e47-df8140075844" />
