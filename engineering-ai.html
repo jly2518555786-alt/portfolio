@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="工程化 AI 知识库：Prompt、Context、Harness、Loop、Agent Skills 的知识与联系，以及个人学习中的系统思考。"><title>工程化 AI 知识库</title>
+<style>
+:root{--bg:#f7f9fc;--ink:#223149;--muted:#64728a;--blue:#2854cb;--line:#dce3ed;--teal:#18776c;--side:260px}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.95 "DengXian","PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--blue);text-underline-offset:4px}button,input{font:inherit}button{cursor:pointer;color:inherit}button,a,input,summary{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:4px}[hidden]{display:none!important}.skip{position:fixed;top:-90px;left:15px;background:white;padding:10px;z-index:20}.skip:focus{top:10px}.sidebar{position:fixed;inset:0 auto 0 0;width:var(--side);background:#eef2f8;border-right:1px solid var(--line);padding:32px 22px;overflow:auto;z-index:6}.brand{font-size:23px;line-height:1.4;color:var(--ink);text-decoration:none;font-weight:800;display:block}.brand small{font-size:12px;font-weight:400;display:block;color:var(--muted);margin-top:10px}.search{margin:30px 0 15px}.search label{display:block;font-size:12px;color:var(--muted);margin-bottom:7px}.search input{width:100%;background:white;border:1px solid #cad5e6;border-radius:6px;padding:9px 10px;font-size:13px}.search p{font-size:12px;min-height:23px;margin:3px 0;color:var(--muted)}nav{display:grid;gap:5px}nav a{font-size:14px;text-decoration:none;color:#536178;line-height:1.5;padding:10px 11px;border-left:3px solid transparent;border-radius:4px}nav a small{display:block;color:var(--muted);font-size:11px;margin-top:3px}nav a:hover{background:#e1e9f9}nav a.active{background:white;color:var(--blue);border-left-color:var(--blue);font-weight:700}.sidefoot{margin-top:30px;border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--muted)}header{margin-left:var(--side);position:sticky;top:0;z-index:4;height:64px;padding:0 45px;background:#f7f9fcf5;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px}header a{color:var(--muted);text-decoration:none}.actions{display:flex;gap:20px;align-items:center}.plain{border:0;background:none;color:var(--muted);font-size:12px}.menu{display:none}main{margin-left:var(--side);max-width:1390px;padding:56px 64px}.hero{padding-bottom:45px}.eyebrow{font-size:14px;color:var(--blue);display:flex;gap:12px;align-items:center}.eyebrow:before{content:"";height:3px;width:24px;background:var(--blue)}h1{font-size:clamp(36px,4.5vw,66px);line-height:1.25;margin:18px 0 22px;letter-spacing:-2px}.intro{font-size:19px;max-width:700px;color:#58677e}.note{font-size:13px;color:var(--muted);max-width:720px;margin-top:24px}.map{background:#eaf0fd;border:1px solid #d4dff6;padding:30px;border-radius:12px;margin:30px 0 20px}.map-head{display:flex;justify-content:space-between;gap:20px;align-items:baseline;margin-bottom:20px}.map-head h2{font-size:19px;margin:0}.map-head span{font-size:12px;color:var(--muted)}.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.map-grid button{border:1px solid #c5d2ef;background:white;border-radius:6px;padding:17px 20px;text-align:left;line-height:1.5;min-height:94px}.map-grid strong{display:block;color:var(--blue);font-size:19px}.map-grid span{display:block;color:var(--muted);font-size:13px;margin-top:5px}.map-grid button:last-child{grid-column:1/-1;min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}.map-grid button[aria-pressed=true]{background:var(--blue);border-color:var(--blue)}.map-grid button[aria-pressed=true] strong,.map-grid button[aria-pressed=true] span{color:white}.map-info{border-top:1px solid #c7d4ef;margin-top:20px;padding-top:17px;min-height:100px;font-size:14px}.map-info p{margin:0}.map-info a{display:inline-block;margin-top:4px}.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.legend span:before{content:"";display:inline-block;width:7px;height:7px;background:var(--blue);border-radius:50%;margin-right:7px}.legend span:nth-child(2):before{background:var(--teal)}.legend span:nth-child(3):before{background:#9b753b}.chapter{max-width:920px;padding:52px 0;border-top:1px solid var(--line)}.chapter-head{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:25px}.chapter h2{font-size:30px;line-height:1.4;letter-spacing:-.5px;margin:0}.chapter h2 span{display:block;font-size:15px;font-weight:400;color:var(--muted);letter-spacing:0;margin-top:8px}.anchor{font-size:12px;white-space:nowrap;color:var(--muted);text-decoration:none;margin-top:8px}.lead{font-size:19px;color:#52627b;line-height:1.85;max-width:780px;margin-bottom:28px}h3{font-size:19px;margin:29px 0 11px;line-height:1.6}p{margin:12px 0}ul,ol{padding-left:23px}li{margin:7px 0;padding-left:3px}.thought{background:#edf6f3;border-left:3px solid var(--teal);padding:12px 20px;margin:24px 0}.thought b{font-size:12px;color:var(--teal)}.thought p{font-size:15px;margin:7px 0}.boundary{font-size:14px;color:var(--muted);background:#eef1f6;padding:15px 20px;border-radius:5px;margin:22px 0}.table-wrap{overflow-x:auto;margin:20px 0}table{width:100%;border-collapse:collapse;text-align:left;font-size:14px}th{background:#edf1f7;color:#50627b}th,td{padding:13px 15px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{min-width:110px;font-weight:600}.source{font-size:12px;color:var(--muted);margin-top:27px}.source a{display:inline-block;margin-left:8px;color:#536b9f}details{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin:24px 0}summary{font-size:14px;cursor:pointer;color:#596a84}details p,details ol{font-size:14px}.quote{border-left:2px solid #a6b8df;padding-left:17px;color:#5d6e89;font-size:14px;margin:20px 0}.quote cite{font-size:12px;display:block;font-style:normal}.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}.two>div{border-top:2px solid #b9c9e6;padding-top:15px}.two h3{margin-top:0}.switches{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.switches button{padding:8px 15px;background:white;border:1px solid #ccd6e7;border-radius:5px;font-size:14px}.switches button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:white}.panel,.arch{padding:24px;border:1px solid var(--line);background:white;border-radius:8px}pre{font:14px/1.95 "Cascadia Code",Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;color:#3d5273}.caption{font-size:12px;color:var(--muted)}.flow{display:flex;align-items:stretch;gap:9px;margin:20px 0}.node{flex:1;text-align:center;padding:16px 12px;background:white;border:1px solid #cdd8e8;border-radius:6px;font-size:14px;display:flex;flex-direction:column;justify-content:center}.node small{font-size:12px;color:var(--muted);display:block}.node.on{background:var(--blue);border-color:var(--blue);color:white}.node.on small{color:#e5edff}.arrow{align-self:center;color:#8a9bb5}.loop-state{min-height:115px;background:#edf2ff;border-left:3px solid var(--blue);padding:12px 20px}.loop-state b{font-size:14px}.loop-state p{font-size:14px;margin:6px 0}.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:15px}.button{padding:9px 18px;background:var(--blue);border:1px solid var(--blue);border-radius:5px;color:white;font-size:14px}.button.secondary{background:white;color:var(--blue)}button:disabled{opacity:.55;cursor:default}.arch .flow{margin:0}.zone{background:#f0f4fc;border:1px dashed #a8b9d9;padding:16px;margin-top:16px;border-radius:6px;font-size:14px}.zone strong{color:var(--blue)}.zone p{margin:6px 0}.arch-note{min-height:60px;font-size:14px;color:var(--muted)}.equation{text-align:center;padding:25px;background:#edf2fc;color:var(--blue);font-size:21px;line-height:1.8;margin:24px 0}.references li{font-size:14px;margin-bottom:12px}.references span{display:block;font-size:12px;color:var(--muted)}footer{max-width:920px;border-top:1px solid var(--line);padding:30px 0;font-size:12px;color:var(--muted)}footer p{margin:5px 0}.back{position:fixed;bottom:24px;right:22px;background:white;border:1px solid var(--line);padding:9px 15px;border-radius:6px;font-size:12px;text-decoration:none}.shade{display:none}.empty{padding:30px;background:white;border:1px solid var(--line)}noscript p{background:#fff6df;padding:10px}
+@media(max-width:1120px){:root{--side:230px}main{padding:42px 34px}header{padding:0 34px}.sidebar{padding:30px 16px}h1{font-size:44px}.map{padding:23px}.chapter h2{font-size:27px}}
+@media(max-width:760px){html{scroll-padding-top:80px}.sidebar{transform:translateX(-100%);width:280px;transition:transform .2s}.sidebar.open{transform:translateX(0)}.shade.open{display:block;position:fixed;inset:0;z-index:5;background:#182d4d66}header{margin-left:0;height:60px;padding:0 20px}.crumb{display:none}.menu{display:block;border:1px solid var(--line);background:white;padding:5px 12px;border-radius:5px;font-size:13px}main{margin-left:0;padding:32px 22px}h1{font-size:39px;letter-spacing:-1.3px}.intro{font-size:17px}.hero{padding-bottom:30px}.eyebrow{font-size:13px}.map{padding:18px;margin-top:25px}.map-head{display:block}.map-head span{display:block;margin-top:5px}.map-grid{gap:8px}.map-grid button{padding:13px 12px;min-height:95px}.map-grid strong{font-size:16px}.map-grid span{font-size:12px}.map-grid button:last-child{display:block}.map-info{min-height:125px}.chapter{padding:38px 0}.chapter h2{font-size:26px}.chapter-head{gap:8px}.anchor{font-size:11px}.lead{font-size:17px}.two{grid-template-columns:1fr;gap:15px}.flow{flex-wrap:wrap}.flow .node{flex:1 1 36%;min-height:80px}.flow .arrow{display:none}.arch .flow{display:grid;grid-template-columns:1fr}.arch .flow .node{min-height:65px}.arch .flow .arrow{display:block;text-align:center;transform:rotate(90deg);line-height:1}.panel,.arch{padding:18px}.equation{font-size:17px;padding:20px 12px}table{min-width:510px}.back{bottom:12px;right:12px}footer{padding-bottom:45px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sidebar{transition:none}}
+@media print{.sidebar,header,.back,.anchor,.controls,.switches,.shade{display:none!important}main{margin:0;max-width:none;padding:0}body{background:white;font-size:11pt}.chapter{max-width:none;padding:25px 0}h1{font-size:32pt}.chapter h2{font-size:22pt}.map,.panel,.thought{break-inside:avoid}details>*{display:block!important}[hidden]{display:block!important}a{color:inherit}}
+/* Reading contrast and weight: use YaHei before the lighter DengXian face. */
+:root{--ink:#1d293b;--muted:#48566c}
+body{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;font-size:17px;font-weight:500}
+nav a{font-size:15px;font-weight:600;color:#34445c}nav a small{font-size:13px;font-weight:500;color:#4b5b73}
+.brand small,.search label,.search p,.sidefoot,header,.plain,.map-head span,.legend,.anchor,.source,.caption,.references span,footer{font-size:13px;font-weight:500}
+.search input{font-size:15px;color:var(--ink)}.search input::placeholder{color:#526078;opacity:1}
+.note{font-size:15px;color:#42536b}.lead{color:#354963;font-weight:500}.chapter h2 span{color:#48566c;font-weight:500}
+.thought p{font-size:16px}.thought b{font-size:14px;font-weight:700}.boundary{font-size:15px;color:#3e5069}
+table{font-size:15px}th{color:#354760;font-weight:700}summary{font-size:15px;font-weight:600;color:#354b69}
+.quote{color:#425470}.quote cite{font-size:13px}.map-grid span{font-size:14px;color:#465a76;font-weight:500}
+.map-grid strong{font-weight:700}.map-info{font-size:15px}.node{font-size:15px;font-weight:600}.node small{font-size:13px;font-weight:500}
+.arch-note{color:#42536b;font-size:15px}.source a{color:#36578c}pre{font-weight:500;color:#304866}
+.governance{margin:30px 0;padding:25px;background:#fff;border:1px solid #c8d5e8;border-radius:8px}
+.governance h3{margin-top:0}.governance .scope-title{font-size:17px;margin:27px 0 10px;color:var(--blue)}
+.governance table{min-width:620px}.governance td:first-child{width:25%}.governance td:nth-child(2){width:35%}
+code{font-family:"Cascadia Code",Consolas,"Microsoft YaHei",monospace;font-size:.9em;overflow-wrap:anywhere;background:#edf1f7;padding:2px 5px;border-radius:3px}
+.rule-order{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0}
+.rule-order div{border-top:3px solid #6382bf;padding:13px;background:#eef3fc;font-size:14px}.rule-order strong{display:block;font-size:15px;color:#294e96}
+.governance .quote{margin-left:0}.governance p{font-size:16px}
+@media(max-width:760px){body{font-size:17px}.chapter h2{font-size:25px}.note{font-size:15px}.map-grid span{font-size:13px}.rule-order{grid-template-columns:1fr}.governance{padding:18px}.governance table{min-width:620px}}
+html{scroll-behavior:auto}
+@media print{#empty{display:none!important}details{break-inside:avoid}}
+</style></head><body>
+<a class="skip" href="#content">跳到正文</a><div class="shade" id="shade"></div>
+<aside class="sidebar" id="sidebar" aria-label="知识库导航">
+<a class="brand" href="#home">工程化 AI<br>知识库<small>知识、联系与实践中的思考</small></a>
+<div class="search"><label for="search">检索章节与正文</label><input type="search" id="search" placeholder="试试：上下文、规则、网关" autocomplete="off"><p id="search-status" role="status" aria-live="polite"></p></div>
+<nav id="nav"><a href="#relations">关系<small>先建立整体理解</small></a><a href="#prompt">Prompt engineering</a><a href="#context">Context engineering</a><a href="#harness">Harness Engineer<small>核心：约束先行</small></a><a href="#loop">Loop Engineering<small>核心：定义目标</small></a><a href="#skills">Agent skills</a><a href="#cost">有效管理成本</a><a href="#architecture">技术架构</a><a href="#replication">自我复制的计算机程序</a></nav>
+<div class="sidefoot">一份持续整理的个人知识笔记。<br>概念解释与个人理解分别标注。<br><a href="#references">参考资料</a></div></aside>
+<header><button class="menu" id="menu" aria-expanded="false" aria-controls="sidebar">章节目录</button><span class="crumb">知识分享 / 工程化 AI</span><div class="actions"><a href="#references">参考资料</a><button class="plain" id="print">打印 / 保存 PDF</button></div></header>
+<main id="content"><div id="home" class="hero"><div class="eyebrow">把零散的工具，放回系统中理解</div><h1>工程化 AI 知识库</h1>
+<p class="note">这份知识库源于我的学习笔记。技术概念附参考资料，跨学科映射标为“我的理解”；应用案例仅作为帮助理解的补充。</p>
+<div class="map" aria-label="工程方法关系浏览器"><div class="map-head"><h2>它们分别在回答什么问题？</h2><span>选择一个概念，查看它与其他方法的联系</span></div>
+<div class="map-grid"><button data-concept="prompt" aria-pressed="true"><strong>Prompt</strong><span>如何把任务说清楚</span></button><button data-concept="context" aria-pressed="false"><strong>Context</strong><span>此刻需要哪些信息</span></button><button data-concept="harness" aria-pressed="false"><strong>Harness</strong><span>在什么环境与约束下行动</span></button><button data-concept="loop" aria-pressed="false"><strong>Loop</strong><span>如何检查、修正与停止</span></button><button data-concept="skills" aria-pressed="false"><strong>Agent Skills</strong><span>把知识与流程沉淀为可复用能力</span></button></div>
+<div class="map-info" id="concept-info" aria-live="polite"><p>Prompt 表达任务与输出要求；它也是上下文的一部分。清晰的指令需要信息支持，执行后的结果还需要被检查。</p><a href="#prompt">阅读 Prompt engineering</a></div></div>
+<div class="legend"><span>概念与机制</span><span>我的理解</span><span>可展开的应用例子</span></div></div>
+<noscript><style>.sidebar{position:relative;transform:none;width:100%;height:auto}.sidebar .search{display:none}header{display:none}main{margin-left:0}.back{display:none}</style><p>正文与章节链接可直接阅读。启用 JavaScript 后可使用检索、关系浏览与演示功能。</p></noscript><div id="empty" class="empty" hidden>没有找到匹配章节。试试“规则”“记忆”“模型”，或清空搜索词。</div>
+
+<section class="chapter" id="relations"><div class="chapter-head"><h2>关系<span>从方法清单，形成系统视角</span></h2><a class="anchor" href="#relations">本章链接</a></div>
+<p class="lead">这些方法关注不同的问题，却会在同一个 AI 系统中一起发挥作用。</p>
+<p>我最初把它们理解为逐层扩展的视角：从指令，扩展到信息，再扩展到执行环境与持续反馈。这个视角帮助我建立联系；实际系统里，它们往往相互交织。</p>
+<div class="table-wrap"><table><thead><tr><th>方法</th><th>关注对象</th><th>与其他方法的联系</th></tr></thead><tbody>
+<tr><td>Prompt</td><td>指令、范例与输出要求</td><td>作为 Context 的组成部分，表达当前任务。</td></tr>
+<tr><td>Context</td><td>当前推理可用的信息</td><td>从工具、记忆和任务状态中选择信息。</td></tr>
+<tr><td>Harness</td><td>承载模型执行的外围系统</td><td>组织工具、权限、状态、检查和上下文管理。</td></tr>
+<tr><td>Loop</td><td>执行、观察、修正与停止</td><td>依赖 Harness 提供反馈与状态，推动目标逐步实现。</td></tr>
+<tr><td>Skills</td><td>可按需加载的知识与工作流程</td><td>提供任务方法，也可以配套脚本和参考资料。</td></tr></tbody></table></div>
+<div class="thought"><b>我的理解 · 跨学科映射</b><p>Prompt 让我想到语言学中的准确表达；Context 让我想到信息科学中的筛选与组织；Harness 让我想到控制论与制度设计；多 Agent 协作让我想到管理学中的分工与复核。</p><p>Skills 的分类与触发涉及分类学，但它还包含操作步骤、资源和执行方法。Loop 则提醒我：目标管理必须落实到反馈与停止条件。</p></div>
+<div class="boundary">这些映射是我的学习工具，并非学科之间的等号。这里也不把几种方法描述为严格、统一的嵌套标准或必然的技术演进路线。</div>
+<p class="source">延伸阅读：<a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Building effective agents</a></p></section>
+
+<section class="chapter" id="prompt"><div class="chapter-head"><h2>Prompt engineering<span>先定义问题，再改进表达</span></h2><a class="anchor" href="#prompt">本章链接</a></div>
+<p class="lead">提示词把意图转化为模型可以处理的任务描述。改进它，需要知道什么算是一个好结果。</p>
+<blockquote class="quote">“A clear definition of the success criteria for your use case”<cite>Claude 官方文档 · Prompt engineering overview · Before prompt engineering</cite></blockquote>
+<h3>我优先关注的五件事</h3><ol><li><strong>任务：</strong>需要解决什么具体问题？</li><li><strong>背景与角色：</strong>面向谁、在什么场景、采用什么专业视角？</li><li><strong>输入与范例：</strong>哪些是材料，哪些是期望的成品？</li><li><strong>输出要求：</strong>需要哪些内容、结构和证据？</li><li><strong>验收：</strong>如何判断结果合格，材料不足时如何处理？</li></ol>
+<h3>看一个表达逐步清晰的例子</h3>
+<div class="switches" data-switch="prompt-panels" aria-label="提示词示例版本"><button data-panel="p-simple" aria-pressed="true">最初表达</button><button data-panel="p-clear" aria-pressed="false">补充任务定义</button><button data-panel="p-check" aria-pressed="false">加入验收条件</button></div>
+<div id="prompt-panels"><div class="panel" id="p-simple"><pre>帮我比较这两个产品。</pre><p class="caption">比较的目的、依据与输出结构仍不明确。</p></div><div class="panel" id="p-clear" hidden><pre>面向准备选型的业务负责人，比较附件中的两个产品。
+按适用场景、核心能力、部署要求、维护成本四个维度整理。
+只使用附件材料；未披露的信息标为“待确认”。</pre></div><div class="panel" id="p-check" hidden><pre>输出一张对照表，并附每项判断的材料出处。
+将已披露事实和你的推断分开。
+列出影响选型、但材料尚未回答的三个问题。
+检查：四个维度是否齐全？每项事实是否有出处？</pre></div></div>
+<div class="thought"><b>我的理解 · 从成品倒推要求</b><p>找到一个好的成品范例，让 AI 倒推它背后的结构、信息要求和表达规则，并解释每条提示的作用。随后换一组输入测试，观察它能否复现关键特征。</p></div>
+<div class="boundary">指定“专家角色”不能替代真实资料与验证。反向提示得到的是候选方法，仍要用不同输入检验。</div>
+<p class="source">参考：<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener noreferrer">Claude · Prompt engineering overview</a></p></section>
+
+<section class="chapter" id="context"><div class="chapter-head"><h2>Context engineering<span>在需要的时候，提供需要的信息</span></h2><a class="anchor" href="#context">本章链接</a></div>
+<p class="lead">上下文工程关心当前推理可见的信息：哪些需要进入、哪些可以检索、哪些应当保留或压缩。</p>
+<p>我把它拆成三个问题：信息在哪里？什么时候需要？用什么形式交给模型？任务说明、检索片段、工具返回和历史记录，应围绕当前目标组织。</p>
+<div class="two"><div><h3>进入当前上下文</h3><p>任务目标、关键约束、正在使用的证据、当前状态和必要的工具说明。</p></div><div><h3>留在外部，按需读取</h3><p>完整文档、历史日志、可复用知识、原始数据和暂时无关的任务材料。</p></div></div>
+<h3>RAG、记忆、压缩分别做什么？</h3>
+<div class="table-wrap"><table><thead><tr><th>机制</th><th>用途</th><th>需要检查</th></tr></thead><tbody><tr><td>RAG</td><td>从外部资料检索相关内容，再提供给模型。</td><td>是否漏检、证据是否相关、来源是否可靠。</td></tr><tr><td>记忆</td><td>跨步骤或跨会话保留状态、经验或偏好。</td><td>是否过时、是否冲突、是否混入未经确认的结论。</td></tr><tr><td>上下文压缩</td><td>用较精炼的记录接续长任务。</td><td>是否保留目标、约束、决策依据和未完成事项。</td></tr></tbody></table></div>
+<div class="thought"><b>我的理解 · 工作纪要也是信息接口</b><p>好的接续记录应当说明：目标是什么、已经确认什么、为什么这样决定、下一步还缺什么。这样新一轮执行才不需要重新猜测。</p></div>
+<h3>稳定信息与缓存</h3><p>把可复用的稳定内容与经常变化的任务信息分开，有助于管理上下文。使用前缀缓存时，需要关注内容与序列化顺序的稳定性；是否命中还取决于具体服务的规则。</p>
+<div class="boundary">“一个任务一个会话”“更多使用 CLI”可以作为工作习惯，不是普遍最优规则。跨任务共享状态的需求、工具返回体积和权限要求都会影响选择。保留坐标与表格结构时，也不能只追求把 PDF 压成最短文本。</div>
+<p class="source">参考：<a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer">Effective context engineering</a><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener noreferrer">Prompt caching</a></p></section>
+
+<section class="chapter" id="harness"><div class="chapter-head"><h2>Harness Engineer<span>核心：约束先行</span></h2><a class="anchor" href="#harness">本章链接</a></div>
+<p class="lead">模型之外，还需要一套让它能够行动、留下状态、接受检查的执行环境。</p>
+<p>理解 Harness 时，我关注工具连接、权限边界、运行状态、日志与检查。模型给出一个行动建议，系统还需要决定是否允许执行、如何记录，以及如何观察结果。</p>
+<div class="two"><div><h3>事前引导 · Guides</h3><p>任务规则、代码规范、工具说明和架构决策，为行动提供方向。</p><p class="caption">明确什么应该做、哪些条件必须满足。</p></div><div><h3>事后检测 · Sensors</h3><p>测试、Schema 校验、结果对照与人工复核，提供执行后的反馈。</p><p class="caption">观察实际发生了什么，以及结果是否符合要求。</p></div></div>
+<div class="thought"><b>我的理解 · 控制论与制度设计</b><p>规则设定类似前馈控制，检测与纠错类似反馈控制。管理系统时，我会同时问“怎样减少错误”和“错误发生后怎样发现并处理”。</p></div>
+<div class="governance" id="rule-system">
+<h3>规则体系：约束先行，类似于管理公司</h3>
+<p>我的理解是：管理一个 AI 工作环境，也需要把工作原则、项目制度、执行设施、专业能力、知识资料和工作记录分开组织。不同文件承担不同职责。</p>
+<div class="table-wrap"><table><thead><tr><th>管理公司的类比</th><th>AI 工作环境中的对应物</th><th>负责什么</th></tr></thead><tbody>
+<tr><td>共同工作原则</td><td>用户级 <code>AGENTS.md</code></td><td>跨项目适用的协作方式、通用偏好和工作约定。</td></tr>
+<tr><td>公司与部门制度</td><td>项目根目录、子目录的 <code>AGENTS.md</code></td><td>项目规范、测试命令、编码要求，以及模块的局部规则。</td></tr>
+<tr><td>运行基础设施</td><td><code>config.toml</code>、MCP、Hooks</td><td>配置模型与执行环境，连接工具，并在执行事件中进行检查或控制。</td></tr>
+<tr><td>专业部门能力</td><td>Skills</td><td>封装专业知识、操作方法、配套脚本与可复用工作流。</td></tr>
+<tr><td>公司知识库</td><td><code>README</code>、<code>docs/</code>、架构与设计文档</td><td>提供背景、业务事实、设计依据和使用方法。</td></tr>
+<tr><td>工作纪要</td><td>memories、历史对话与任务记录</td><td>保留经验、上下文和任务状态，帮助接续工作。</td></tr>
+</tbody></table></div>
+<h4 class="scope-title">用户级：跨项目的默认约定与配置</h4>
+<div class="table-wrap"><table><thead><tr><th>位置</th><th>主要内容</th><th>理解方式</th></tr></thead><tbody>
+<tr><td><code>~/.codex/AGENTS.md</code></td><td>全局工作原则、协作方式、通用偏好。</td><td>为不同项目提供共同的工作基础。</td></tr>
+<tr><td><code>~/.codex/config.toml</code></td><td>模型、审批、沙箱和 MCP 等配置。</td><td>设置个人默认的运行环境。</td></tr>
+<tr><td><code>~/.agents/skills/</code></td><td>个人可跨项目复用的 Skills。</td><td>按需调用的通用专业能力。</td></tr>
+<tr><td><code>~/.codex/memories/</code> 或 <code>memories_v2/</code></td><td>启用记忆功能后生成的状态与摘要；具体目录取决于版本与迁移状态。</td><td>辅助接续工作的记录，不作为权威业务规则。</td></tr>
+</tbody></table></div>
+<h4 class="scope-title">项目级：当前项目的制度、能力与资料</h4>
+<div class="table-wrap"><table><thead><tr><th>位置</th><th>主要内容</th><th>理解方式</th></tr></thead><tbody>
+<tr><td><code>项目根目录/AGENTS.md</code></td><td>项目规则、目录规范、测试与构建命令。</td><td>当前项目的共同工作约定。</td></tr>
+<tr><td><code>项目子目录/AGENTS.md</code></td><td>模块或子系统的局部要求。</td><td>在适用目录内细化项目规则。</td></tr>
+<tr><td><code>项目根目录/.codex/config.toml</code></td><td>项目特定的运行配置。</td><td>受信任项目可加载此层配置，覆盖相应用户默认项。</td></tr>
+<tr><td><code>项目根目录/.agents/skills/</code></td><td>适用于当前项目或团队的技能。</td><td>与项目代码一起维护的专业流程。</td></tr>
+<tr><td><code>docs/</code>、<code>README</code>、架构与设计文档</td><td>项目知识、背景与参考资料。</td><td>根据任务读取，也可以由指令文件明确引用。</td></tr>
+</tbody></table></div>
+<h4 class="scope-title">规则怎样组合？</h4>
+<blockquote class="quote">“Files closer to your current directory override earlier guidance”<cite>OpenAI 官方文档 · Custom instructions with AGENTS.md · How Codex discovers guidance</cite></blockquote>
+<div class="rule-order"><div><strong>全局工作约定</strong>先加载用户级指令，提供共同基础。</div><div><strong>项目工作约定</strong>沿项目根目录到工作目录读取适用文件。</div><div><strong>局部工作约定</strong>更接近工作目录的指令可覆盖前面的冲突内容。</div></div>
+<p>因此，用户级文件更像全局默认约定；它不是永远高于项目文件的“最高层法律”。这套文件组合规则也不能越过系统、开发者指令或运行环境强制执行的限制。</p>
+<details><summary>路径与加载规则补充</summary><p>默认位置中的 <code>~</code> 表示用户主目录；<code>CODEX_HOME</code> 可改变 Codex 配置与状态的位置。同一目录中优先检查 <code>AGENTS.override.md</code>，再检查 <code>AGENTS.md</code> 等候选文件。</p><p>按当前官方文档，用户级 Skills 的位置为 <code>~/.agents/skills/</code>；笔记中的 <code>~/.codex/skills/</code> 可能出现在旧版或特定安装环境中。应以当前客户端的发现规则为准。</p></details>
+<div class="thought"><b>我的理解 · 制度要有执行机制</b><p>先写清规则，再决定哪些交给指令引导，哪些通过配置、工具权限、Hooks、程序校验和审批真正落实。就像管理公司，制度文件、业务资料和会议纪要都有价值，但承担的责任不同。</p></div>
+<p class="source">参考：<a href="https://developers.openai.com/codex/guides/agents-md/" target="_blank" rel="noopener noreferrer">OpenAI · AGENTS.md</a><a href="https://developers.openai.com/codex/config-basic/" target="_blank" rel="noopener noreferrer">Config basics</a><a href="https://developers.openai.com/codex/skills/" target="_blank" rel="noopener noreferrer">Skills</a><a href="https://learn.chatgpt.com/docs/customization/memories" target="_blank" rel="noopener noreferrer">Memories</a></p>
+</div>
+<h3>规则需要落实到哪里？</h3><p>自然语言说明表达意图；程序校验、权限配置和审批机制执行边界。比如“写入前必须通过检查”，可以由运行时拦截实现，而不只是放在提示词里。</p>
+<p>多 Agent 场景中，执行与检查可以分工，但检查者仍需要明确标准和可核验的材料。多一个模型，并不自动等于多一份独立、正确的判断。</p>
+<details><summary>应用例子 · REITs 数据修改的边界</summary><p>产品规划中，确定性公式可以自动重算；涉及业务含义的影响判断先形成待审核提案，批准后再执行。这是我的方案设计，实际落地需要相应的权限与审批实现。</p></details>
+<p class="source">参考：<a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noopener noreferrer">Effective harnesses for long-running agents</a><a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener noreferrer">Claude Code · Hooks reference</a></p></section>
+
+<section class="chapter" id="loop"><div class="chapter-head"><h2>Loop Engineering<span>核心：定义目标</span></h2><a class="anchor" href="#loop">本章链接</a></div>
+<p class="lead">持续执行的前提，是知道什么算完成、什么需要重试，以及什么时候应该停下来。</p>
+<p>我用 Loop Engineering 指代对执行闭环的设计：把目标、行动、观察、修正与停止条件连起来。这是本知识库采用的工作框架，不假定它是一个具有统一规范的标准术语。</p>
+<h3>把“做好”改写成可以检查的条件</h3><ul><li><strong>完成标准：</strong>能用测试、数据对照或人工标准验证。</li><li><strong>边界条件：</strong>允许修改什么，哪些动作需要人工决策。</li><li><strong>失败处理：</strong>重试、降级、保留中间结果或交由人工处理。</li><li><strong>资源预算：</strong>限制轮次、时间或成本，避免无止境执行。</li></ul>
+<h3>走一遍闭环</h3><div class="flow" id="loop-flow"><div class="node on">定义目标<small>完成与边界</small></div><span class="arrow">→</span><div class="node">执行<small>产生候选结果</small></div><span class="arrow">→</span><div class="node">检查<small>发现缺口</small></div><span class="arrow">→</span><div class="node">修正 / 停止<small>反馈决定下一步</small></div></div>
+<div class="loop-state" id="loop-state" role="status" aria-live="polite"><b>定义目标</b><p>示例任务：整理一份产品对照表。每项事实需要出处；最多允许两轮修正。</p></div><div class="controls"><button class="button" id="loop-next">下一步</button><button class="button secondary" id="loop-reset">重新演示</button><span class="caption">预设的教学演示，无模型调用</span></div>
+<div class="thought"><b>我的理解 · 目标也需要分层</b><p>最终目标是交付可用成果；阶段目标是完成一个可检验的子任务。只盯着“生成了内容”，容易遗漏质量、边界与交付条件。</p></div>
+<p>定时触发或事件触发决定何时启动任务；闭环则决定启动后怎样推进。遇到证据不足或高影响决策，交给人工也可以是一个明确的结束状态。</p>
+<p class="source">参考：<a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Building effective agents · Evaluator-optimizer / Agents</a></p></section>
+
+<section class="chapter" id="skills"><div class="chapter-head"><h2>Agent skills<span>把经验组织成可复用的方法</span></h2><a class="anchor" href="#skills">本章链接</a></div>
+<p class="lead">Skill 把任务说明、专业知识与配套资源组织起来，让 Agent 在需要时使用。</p>
+<p>在 Agent Skills 开放格式中，一个 Skill 以含有 SKILL.md 的文件夹为核心，也可以包含脚本、参考材料和模板。</p>
+<h3>渐进式披露：先知道有什么，再读取怎么做</h3><div class="flow"><div class="node">发现<small>名称与描述</small></div><span class="arrow">→</span><div class="node">激活<small>读取完整指令</small></div><span class="arrow">→</span><div class="node">执行<small>按需读取资源</small></div></div>
+<div class="table-wrap"><table><thead><tr><th>形式</th><th>主要回答</th><th>可以怎样配合</th></tr></thead><tbody><tr><td>Prompt</td><td>这次任务是什么？</td><td>提出任务，并补充当前输入。</td></tr><tr><td>Skill</td><td>这类任务通常怎么做？</td><td>提供方法、约束、参考材料与脚本。</td></tr><tr><td>MCP</td><td>怎样以标准方式连接外部系统？</td><td>为 Agent 提供工具、资源等接口。</td></tr><tr><td>脚本</td><td>如何执行明确的操作？</td><td>承担确定性的处理与检查。</td></tr></tbody></table></div>
+<div class="thought"><b>我的理解 · 分类帮助触发，流程帮助执行</b><p>Skill 的名称和描述帮助判断什么时候用，正文和资源帮助决定怎么做。我会从“专业能力沉淀”和“工作流程规范”两个角度整理自己的 Skills。</p></div>
+<h3>经验如何进入下一版？</h3><p>任务结束后记录失败情形，提炼改进提案，检查是否适用于同类任务，再更新版本并复测。一次偶然成功，不应立即变成所有任务必须遵守的规则。</p>
+<div class="boundary">Skills 的实际发现、加载与执行方式由客户端实现决定。它也不能替代运行时权限控制。</div>
+<p class="source">参考：<a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer">Agent Skills · Overview</a><a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer">MCP · Introduction</a></p></section>
+
+<section class="chapter" id="cost"><div class="chapter-head"><h2>有效管理成本<span>优化每个有效结果的总成本</span></h2><a class="anchor" href="#cost">本章链接</a></div>
+<p class="lead">Token 账单只是成本的一部分。失败重试、等待、人工复核与长期维护，也需要计入。</p>
+<div class="equation">一次有效交付的成本<br>= 模型与工具调用 + 重试 + 人工复核 + 维护</div><p class="caption">这是我的分析框架，用于提醒自己检查被遗漏的成本项，不是统一的计费公式。</p>
+<div class="table-wrap"><table><thead><tr><th>策略</th><th>适用情形</th><th>需要保留的判断</th></tr></thead><tbody><tr><td>文档预处理</td><td>材料包含重复页眉、噪声或无关页面。</td><td>不要丢失关键结构、图表和来源位置。</td></tr><tr><td>按需检索</td><td>资料量大，单次任务只涉及一部分。</td><td>用真实问题检查漏检与召回。</td></tr><tr><td>缓存稳定内容</td><td>多次请求复用较长的共同前缀。</td><td>关注命中条件、有效期与实际账单。</td></tr><tr><td>模型路由</td><td>任务难度不同，质量要求可检验。</td><td>以评测结果决定路由与升级条件。</td></tr><tr><td>确定性脚本</td><td>计算、格式转换、固定校验。</td><td>明确输入边界、错误处理与维护责任。</td></tr></tbody></table></div>
+<div class="thought"><b>我的理解 · 信噪比与总账</b><p>更短的输入不一定更省钱。如果删掉必要信息导致多轮返工，总成本反而可能增加。我更关心每个合格结果花了多少资源。</p></div>
+<p class="source">参考：<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener noreferrer">Prompt caching</a><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Building effective agents · Routing</a></p></section>
+
+<section class="chapter" id="architecture"><div class="chapter-head"><h2>技术架构<span>先分清职责，再看调用路径</span></h2><a class="anchor" href="#architecture">本章链接</a></div>
+<p class="lead">应用运行在哪里、数据存在哪里、模型由谁提供，是三个需要分别回答的问题。</p><h3>模型服务的三种调用路径</h3>
+<div class="switches" aria-label="架构模式"><button data-arch="direct" aria-pressed="true">厂商直连</button><button data-arch="cloud" aria-pressed="false">Cloud Provider</button><button data-arch="gateway" aria-pressed="false">经过服务网关</button></div>
+<div class="arch" aria-live="polite"><div class="flow"><div class="node">用户界面<small>收集输入、呈现结果</small></div><span class="arrow">→</span><div class="node">应用后端<small>业务、权限与状态</small></div><span class="arrow">→</span><div class="node" id="arch-middle"><strong>模型厂商 API</strong><small>模型服务入口</small></div></div><div class="zone" id="arch-zone"><strong>API 是调用约定与接口</strong><p>应用按接口要求发送请求，服务按约定返回结果。API 本身不是一台服务器，也不是某个模型。</p></div></div>
+<p class="arch-note" id="arch-note">直连模式：后端调用模型厂商提供的服务。密钥应由后端管理，公开静态页面不应包含服务密钥。</p>
+<div class="two"><div><h3>应用部署的云</h3><p>承载网站、业务 API、后台任务等。比如应用运行在腾讯云。</p></div><div><h3>模型服务所在的平台</h3><p>提供推理访问。例如应用通过 AWS Bedrock 使用其支持的模型。应用部署与模型访问可以采用不同平台。</p></div></div>
+<h3>数据层也需要分工</h3><p>业务数据库保存结构化事实、状态和版本记录；文档存储保存公告、附件与原文；检索索引帮助定位相关材料。向量检索是一种能力，不意味着要把关系型数据库整体替换掉。</p>
+<div class="thought"><b>我的理解 · 从职责理解产品</b><p>研究一个网关或 Agent 框架时，我会先问：它位于哪一层？接收什么输入？承担哪些控制？故障时影响什么？这样更容易理解它的价值与可替代部分。</p></div>
+<div class="boundary">图中是简化的逻辑路径。网关、云平台和后端的职责可能重叠；真实系统还需要考虑认证、网络、日志、重试、数据边界和运维。</div>
+<p class="source">参考：<a href="https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html" target="_blank" rel="noopener noreferrer">Amazon Bedrock · Overview</a></p></section>
+
+<section class="chapter" id="replication"><div class="chapter-head"><h2>自我复制的计算机程序<span>信息、规则与搜索带来的启发</span></h2><a class="anchor" href="#replication">本章链接</a></div>
+<p class="lead">这一章记录三个相互关联、但需要分别理解的主题：复制自身、规则驱动产物，以及通过搜索改进方案。</p>
+<h3>自我复制：程序也可以成为被处理的对象</h3><p>程序既可以执行操作，也可以作为数据被读取、生成或修改。复制自身的描述、复制运行环境、部署新实例或自动改进能力，是不同的问题。我的笔记从这里延伸到对规则与信息的理解。</p>
+<div class="thought"><b>我的理解 · 信息的双重使用</b><p>我关心的是：同一份信息，能否既描述一个系统，又参与驱动它运行？这让我从“另外维护一份规则说明”，转向思考“让规则本身生成说明与结果”。</p></div>
+<h3>规则同时驱动执行与文档</h3><p>可以把字段定义、来源、计算逻辑和规则版本组织成统一的规则源，由程序读取并执行，再据此生成业务说明。规则修改后，检查哪些数据结果与文档需要更新。</p><p>这是规则驱动与一致性维护的设计思路，并不等同于程序自我复制。它对我的直接启发，是减少多处手工维护同一事实带来的偏差。</p>
+<details><summary>应用例子 · 从数据库生成最新 Excel</summary><p>在我的 REITs 使用场景中，运行 Python 脚本，可以读取后端持续更新的数据库并生成最新 Excel。基于这条使用链路，我进一步思考：能否让同一版本的规则也生成字段口径说明？后者属于产品设计方向。</p></details>
+<h3>知识拓展：遗传算法怎样搜索？</h3><p>遗传算法维护一组候选解，依据适应度评价进行选择，并通过交叉、变异等操作产生下一代，再继续评价与选择。候选如何编码、适应度如何定义，会直接影响搜索过程。</p>
+<div class="flow"><div class="node">候选种群<small>用编码表达方案</small></div><span class="arrow">→</span><div class="node">评价与选择<small>依据适应度</small></div><span class="arrow">→</span><div class="node">交叉与变异<small>产生下一代</small></div></div><p class="caption">新一代继续进入评价与选择，直到达到停止条件。搜索不保证找到全局最优解。</p>
+<h3>对 vibe coding 产品规划的启发</h3><p>面对陌生问题，我可以先生成不同方向的候选方案，再按业务覆盖、实现成本、可验证性和维护难度比较，组合其中有效的设计，并通过原型检验。</p>
+<div class="boundary">“生成多个方案再评价”只是借鉴搜索思想。只有进一步定义编码、种群、选择、交叉与变异等机制，才是在实现遗传算法。评价标准本身仍需要审视；强化学习与遗传算法也不能简单视为同一种方法。</div>
+<p class="source">参考：<a href="https://deap.readthedocs.io/en/master/api/algo.html" target="_blank" rel="noopener noreferrer">DEAP · Evolutionary algorithms</a></p></section>
+
+<section id="references" class="chapter"><div class="chapter-head"><h2>参考资料<span>沿着原始资料继续学习</span></h2></div><p>正文基于个人笔记整理，包含我的类比、方法建议和探索。以下资料用于核对相关概念，不代表它们支持页面中的每一项个人判断。</p>
+<ul class="references">
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener noreferrer">Claude · Prompt engineering overview</a><span>任务成功标准与提示词改进。</span></li>
+<li><a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener noreferrer">Anthropic · Effective context engineering for AI agents</a><span>上下文选择与维护。</span></li>
+<li><a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noopener noreferrer">Anthropic · Effective harnesses for long-running agents</a><span>长任务的状态接续、增量执行与验证。</span></li>
+<li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener noreferrer">Anthropic · Building effective agents</a><span>路由、工作流与 Agent 的设计模式。</span></li>
+<li><a href="https://agentskills.io/home" target="_blank" rel="noopener noreferrer">Agent Skills · Overview</a><span>Skill 的开放格式与渐进式披露。</span></li>
+<li><a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer">Model Context Protocol · Introduction</a><span>AI 应用与外部系统的标准连接方式。</span></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener noreferrer">Claude · Prompt caching</a><span>前缀缓存的适用条件与实现细节。</span></li>
+<li><a href="https://code.claude.com/docs/en/hooks" target="_blank" rel="noopener noreferrer">Claude Code · Hooks reference</a><span>执行过程中的事件处理与控制接口。</span></li>
+<li><a href="https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html" target="_blank" rel="noopener noreferrer">AWS · Amazon Bedrock overview</a><span>托管基础模型服务。</span></li>
+<li><a href="https://deap.readthedocs.io/en/master/api/algo.html" target="_blank" rel="noopener noreferrer">DEAP · Algorithms</a><span>演化算法的评价、选择、交叉与变异。</span></li></ul></section>
+<footer><p>工程化 AI 知识库 · 个人学习笔记整理 · 2026 年 11 月</p><p>概念用于理解，方法需要在具体任务中检验。</p>
+<details><summary>如何把这一页放到自己的 GitHub？</summary><ol><li>将本文件保存为 index.html，上传到你选择的 GitHub 仓库。</li><li>在仓库 Settings → Pages 中选择发布分支与所在目录。已有主页时，可将文件放入单独文件夹，保留原有首页。</li><li>等待 GitHub 显示发布地址，再把该地址放到个人主页 README 中。</li></ol><p>本页的样式、脚本与图解均包含在 HTML 中，无需构建。阅读和使用交互无需连接模型服务；外部参考资料需要联网访问。</p><p><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer">GitHub Pages 官方说明</a></p></details></footer>
+</main><a class="back" href="#home">回到总览 ↑</a>
+<script>
+(()=>{'use strict';const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const concepts={prompt:['Prompt 表达任务与输出要求；它也是上下文的一部分。清晰的指令需要信息支持，执行后的结果还需要被检查。','Prompt engineering'],context:['Context 选择当前需要的信息。执行会产生新记录；检索、记忆和压缩帮助下一轮保持必要状态。','Context engineering'],harness:['Harness 提供工具、状态与控制机制。上下文管理和结果检查可以是其中的一部分，规则需要由执行环境落实。','Harness Engineer'],loop:['Loop 把目标、行动与反馈连起来。它依赖环境提供观察，也需要明确什么时候继续、停止或交由人工处理。','Loop Engineering'],skills:['Skills 沉淀一类任务的方法与资源，按需进入上下文。它们可调用脚本或配合工具，但不能替代系统权限。','Agent skills']};
+$$('[data-concept]').forEach(b=>b.addEventListener('click',()=>{$$('[data-concept]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const k=b.dataset.concept;$('#concept-info p').textContent=concepts[k][0];const a=$('#concept-info a');a.href='#'+k;a.textContent='阅读 '+concepts[k][1];}));
+$$('[data-switch]').forEach(g=>{const area=document.getElementById(g.dataset.switch);g.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));[...area.children].forEach(p=>p.hidden=p.id!==b.dataset.panel);}));});
+const states=[['定义目标','示例任务：整理一份产品对照表。每项事实需要出处；最多允许两轮修正。',0],['执行','读取材料，生成一份带来源的候选对照表。当前产物还需要检查。',1],['检查发现缺口','检查发现其中两项事实没有出处。记录缺口，返回执行环节修正。',2],['反馈进入下一轮','保留有证据的内容，补查缺失来源。这是第一轮修正，仍在预算内。',1],['再次检查','所有已披露事实均有出处，未披露内容已标明。按示例标准检查通过。',2],['停止并交付','完成条件满足，保存结果与检查记录。如果超过预算仍未通过，应保留问题并交由人工处理。',3]];let step=0;
+function renderLoop(){const s=states[step];$('#loop-state b').textContent=s[0];$('#loop-state p').textContent=s[1];$$('#loop-flow .node').forEach((n,i)=>n.classList.toggle('on',i===s[2]));$('#loop-next').disabled=step===states.length-1;$('#loop-next').textContent=step===states.length-1?'演示已完成':'下一步';}
+$('#loop-next').addEventListener('click',()=>{if(step<states.length-1)step++;renderLoop();});$('#loop-reset').addEventListener('click',()=>{step=0;renderLoop();});
+const arches={direct:['模型厂商 API','模型服务入口','API 是调用约定与接口','应用按接口要求发送请求，服务按约定返回结果。API 本身不是一台服务器，也不是某个模型。','直连模式：后端调用模型厂商提供的服务。密钥应由后端管理，公开静态页面不应包含服务密钥。'],cloud:['Cloud Provider','托管模型服务','平台提供访问，模型来自其支持的供应方','例如应用后端通过 AWS Bedrock 访问其支持的模型。具体模型、地区与接口能力以平台文档为准。','应用所在的云，与模型服务平台可以不同。部署位置不决定必须使用哪一家模型服务。'],gateway:['大模型服务网关','再路由至模型服务','网关统一入口，再转发到下游模型服务','按实现可承担鉴权、路由、配额、日志或协议适配。网关之后仍然需要具体的模型服务。','网关可本地或远程运行。它与云平台、反向代理和应用后端之间的实际职责，需要结合具体实现判断。']};
+$$('[data-arch]').forEach(b=>b.addEventListener('click',()=>{$$('[data-arch]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const s=arches[b.dataset.arch];$('#arch-middle strong').textContent=s[0];$('#arch-middle small').textContent=s[1];$('#arch-zone strong').textContent=s[2];$('#arch-zone p').textContent=s[3];$('#arch-note').textContent=s[4];}));
+function menu(open){$('#sidebar').classList.toggle('open',open);$('#shade').classList.toggle('open',open);$('#menu').setAttribute('aria-expanded',String(open));}
+$('#menu').addEventListener('click',()=>menu(!$('#sidebar').classList.contains('open')));$('#shade').addEventListener('click',()=>menu(false));document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu(false);$('#search').blur();}});$$('.sidebar a').forEach(a=>a.addEventListener('click',()=>menu(false)));
+const chapters=$$('.chapter').filter(s=>s.id!=='references'),links=$$('#nav a');
+$('#search').addEventListener('input',()=>{const q=$('#search').value.trim().toLocaleLowerCase();let count=0;chapters.forEach(s=>{const yes=!q||s.textContent.toLocaleLowerCase().includes(q);s.hidden=!yes;if(yes)count++;links.find(a=>a.hash==='#'+s.id).hidden=!yes;});$('#search-status').textContent=q?'匹配 '+count+' 个章节':'';$('#empty').hidden=!q||count>0;$('#home').hidden=!!q;$('#references').hidden=!!q;window.scrollTo(0,0);});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const target=document.getElementById(a.hash.slice(1));if(target&&target.hidden){$('#search').value='';$('#search').dispatchEvent(new Event('input'));}});
+if('IntersectionObserver'in window){const o=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting){links.forEach(a=>{const active=a.hash==='#'+e.target.id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}}},{rootMargin:'-90px 0px -65% 0px',threshold:0});chapters.forEach(s=>o.observe(s));}
+$('#print').addEventListener('click',()=>window.print());
+})();
+</script></body></html>
